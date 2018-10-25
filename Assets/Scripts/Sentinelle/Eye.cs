@@ -36,10 +36,11 @@ public class Eye : MonoBehaviour {
         }
 		
 		//Détéction du joueur
+        debugVector();
 		if (detectPlayer()){
-			Debug.Log("Game Over");
+			//Debug.Log("Game Over");
 		}else{
-			Debug.Log("En vie!");
+			//Debug.Log("En vie!");
 		}
 
     }
@@ -71,13 +72,14 @@ public class Eye : MonoBehaviour {
         }
     }
 	
-	private bool detectPlayer () {
-		Debug.DrawLine(Vector3.zero, transform.right * 10, Color.red, 2.5f);
-		Debug.DrawLine(Vector3.zero, player.transform.position - transform.position, Color.green, 2.5f);
-		
-		Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.yellow);
+	public bool detectPlayer () {
 		if((angleBetweenVector(transform.right, player.transform.position - transform.position)) * (360/Mathf.PI) < 50) {
-			return true;
+             RaycastHit obstacle;
+            if (Physics.Raycast(transform.position, player.transform.position - transform.position, out obstacle) && obstacle.collider.tag == "Player") {
+                return true;
+            }else{
+                return false;
+            }
 		}else{
 			return false;
 		}
@@ -90,4 +92,10 @@ public class Eye : MonoBehaviour {
 	private double norme (Vector3 vect) {
 		return Mathf.Sqrt(Mathf.Pow(vect.x,2) + Mathf.Pow(vect.y,2) + Mathf.Pow(vect.z,2));
 	}
+
+    private void debugVector () {
+        Debug.DrawLine(Vector3.zero, transform.right * 10, Color.red, 2.5f);
+        Debug.DrawLine(Vector3.zero, player.transform.position - transform.position, Color.green, 2.5f);
+        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.yellow);
+    }
 }

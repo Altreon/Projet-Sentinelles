@@ -5,6 +5,7 @@ using UnityEngine;
 public class testEyeMouvement : MonoBehaviour
 {
     public Eye eye;
+    public Light retine; 
 
     // Use this for initialization
     void Start() {
@@ -13,7 +14,11 @@ public class testEyeMouvement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-
+        if(eye.detectPlayer()){
+            retine.color = Color.green;
+        }else{
+            retine.color = Color.red;
+        }
     }
 
     IEnumerator EyeMoveScript() {

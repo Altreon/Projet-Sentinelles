@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4510108350540252}
   - component: {fileID: 108783029684482480}
   m_Layer: 0
-  m_Name: "R\xE9tine"
+  m_Name: Retine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eye: {fileID: 114565190621537590}
+  retine: {fileID: 108783029684482480}
 --- !u!114 &114565190621537590
 MonoBehaviour:
   m_ObjectHideFlags: 1
