@@ -11,6 +11,7 @@ public class Eye : MonoBehaviour {
     private int angleYDir;
 
 	public Player player;
+    public Transform centerView;
     public float speed;
     public float tolerance;
 
@@ -73,9 +74,9 @@ public class Eye : MonoBehaviour {
     }
 	
 	public bool detectPlayer () {
-		if((angleBetweenVector(transform.right, player.transform.position - transform.position)) * (360/Mathf.PI) < 50) {
+		if((angleBetweenVector(centerView.forward, player.transform.position - centerView.position)) * (360/Mathf.PI) < 50) {
              RaycastHit obstacle;
-            if (Physics.Raycast(transform.position, player.transform.position - transform.position, out obstacle) && obstacle.collider.tag == "Player") {
+            if (Physics.Raycast(centerView.position, player.transform.position - centerView.position, out obstacle) && obstacle.collider.tag == "Player") {
                 return true;
             }else{
                 return false;
@@ -94,8 +95,8 @@ public class Eye : MonoBehaviour {
 	}
 
     private void debugVector () {
-        Debug.DrawLine(Vector3.zero, transform.right * 10, Color.red, 2.5f);
-        Debug.DrawLine(Vector3.zero, player.transform.position - transform.position, Color.green, 2.5f);
-        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.yellow);
+        Debug.DrawLine(Vector3.zero, centerView.forward * 10, Color.red, 2.5f);
+        Debug.DrawLine(Vector3.zero, player.transform.position - centerView.position, Color.green, 2.5f);
+        Debug.DrawRay(centerView.position, player.transform.position - centerView.position, Color.yellow);
     }
 }

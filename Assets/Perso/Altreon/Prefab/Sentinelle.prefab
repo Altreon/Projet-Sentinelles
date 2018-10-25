@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  centerView: {fileID: 4001416947669438}
   speed: 4
   tolerance: 0.01
 --- !u!135 &135483223599776424
