@@ -515,6 +515,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posCam: {fileID: 1671678493}
+  player: {fileID: 216354814}
+  distance: 4
+  rotation: {x: -80, y: 0, z: 0}
 --- !u!1 &641331406
 GameObject:
   m_ObjectHideFlags: 0
